@@ -1,6 +1,5 @@
 import re
 import os
-import platform
 import pdfplumber
 from pathlib import Path
 

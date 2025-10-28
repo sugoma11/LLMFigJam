@@ -5,7 +5,7 @@ from typing import Dict, List, Optional, Tuple
 class SectionRequest(BaseModel):
     topicTitle: Optional[str] = None
     center: Optional[Tuple[float, float]] = None
-    
+
     width: float = 1280
     height: float = 720
 
@@ -16,7 +16,7 @@ class SectionRequest(BaseModel):
         elif self.topicTitle is not None and self.center is not None:
             raise ValueError('Only one of topicTitle or center can be provided, not both')
         return self
-    
+
     type: str = 'addSection'
 
 class TitleRequest(BaseModel):
@@ -30,30 +30,30 @@ class TitleRequest(BaseModel):
 
 class StickerRequest(BaseModel):
     topicTitle: str
-    content: str
+    content: Optional[str] = None
 
     type: str = "addSticker"
 
 
 class ColumnOfStickersRequest(BaseModel):
     topicTitle: str
-    content: List[str]
-    spacing: Optional[int] = 200
+    content: Optional[List[str]] = None
+    spacing: Optional[int] = 20
 
     type: str = "addStickerColumn"
 
 
 class ImagesRequest(BaseModel):
     topicTitle: str
-    content: List[str] # list of b64 ims. but raw bytes will more efficient
-    spacing: Optional[int] = 220
+    content: List[str] # list of b64 ims. but raw bytes will be more efficient
+    spacing: Optional[int] = 20
 
     type: str = "addImages"
 
 
 class TableRequest(BaseModel):
     topicTitle: str
-    content: List[Dict[str, str]]
+    content: Optional[List[Dict[str, str]]] = None
 
     type: str = "addTable"
 
@@ -78,4 +78,3 @@ class TableRequest(BaseModel):
         key, val = next(iter(key_value_pair_to_sort.items()))
         self.content = sorted(self.content, key=lambda d: val not in d[key])
         return self
-    

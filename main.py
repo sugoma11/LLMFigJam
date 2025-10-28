@@ -13,7 +13,7 @@ if __name__ == "__main__":
         temperature=settings.temperature
     )
 
-    response_schema = settings.response_schema 
+    response_schema = settings.response_schema
 
     pdf_loader = settings.pdf_loader
     pdf_path = settings.pdf_path
@@ -28,10 +28,6 @@ if __name__ == "__main__":
     _, thread = start_server(host="0.0.0.0", port=8000, messages=messages)
 
     try:
-        thread.join() 
+        thread.join()
     except KeyboardInterrupt:
         print("Shutting down server...")
-
-
-
-
