@@ -33,9 +33,9 @@ jobs:
     - name: Run integration tests
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        OPENAI_API_BASE: ${{ secrets.OPENAI_API_BASE }}
-        MODEL_NAME: ${{ secrets.MODEL_NAME }}
-        TEMPERATURE: ${{ secrets.TEMPERATURE }}
+        OPENAI_API_BASE: ${{ vars.OPENAI_API_BASE }}
+        MODEL_NAME: ${{ vars.MODEL_NAME }}
+        TEMPERATURE: ${{ vars.TEMPERATURE }}
       run: |
         uv run pytest tests/integration/ -v -s --tb=short
 
